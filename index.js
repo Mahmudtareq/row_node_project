@@ -8,9 +8,17 @@ const http = require('http');
 // const { StringDecoder } = require('string_decoder');
 const { handleReqRes } = require('./helpers/handleReqRes');
 const environment = require('./helpers/environments');
+const data = require('./lib/data');
 
 // app object -module scaffolding
 const app = {};
+// testing file system
+// data.create('test', 'newFile', { name: 'Bangladesh', language: 'Bengal' }, (err) => {
+//     console.log('error was ', err);
+// });
+data.read('test', 'newFile', (err, result) => {
+    console.log(err, result);
+});
 
 // configuration
 // app.config = {
