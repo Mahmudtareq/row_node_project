@@ -31,14 +31,14 @@ handler.handleReqRes = (req, res) => {
     const decoder = new StringDecoder('utf-8');
     let realData = '';
     const chosenHandler = routes[trimmedPath] ? routes[trimmedPath] : notFoundHandler;
-    chosenHandler(requestProperties, (statusCode, payLoad) => {
-        statusCode = typeof (statusCode) === 'number' ? statusCode : 500;
-        payLoad = typeof (payLoad) === 'object' ? payLoad : {};
-        const payLoadString = JSON.stringify(payLoad);
-        // return the final response
-        res.writeHead(statusCode);
-        res.end(payLoadString);
-    });
+    // chosenHandler(requestProperties, (statusCode, payLoad) => {
+    //     statusCode = typeof (statusCode) === 'number' ? statusCode : 500;
+    //     payLoad = typeof (payLoad) === 'object' ? payLoad : {};
+    //     const payLoadString = JSON.stringify(payLoad);
+    //     // return the final response
+    //     res.writeHead(statusCode);
+    //     res.end(payLoadString);
+    // });
 
     req.on('data', (buffer) => {
         realData += decoder.write(buffer);
@@ -46,7 +46,14 @@ handler.handleReqRes = (req, res) => {
     req.on('end', () => {
         realData += decoder.end();
         // console.log(realData);
-        res.end('Hello world hello');
+        chosenHandler(requestProperties, (statusCode, payLoad) => {
+        statusCode = typeof (statusCode) === 'number' ? statusCode : 500;
+        payLoad = typeof (payLoad) === 'object' ? payLoad : {};
+        const payLoadString = JSON.stringify(payLoad);
+        // return the final response
+        res.writeHead(statusCode);
+        res.end(payLoadString);
+    });
     });
     // console.log(headersObject);
     // request handle
