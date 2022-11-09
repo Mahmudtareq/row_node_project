@@ -16,8 +16,14 @@ const app = {};
 // data.create('test', 'newFile', { name: 'Bangladesh', language: 'Bengal' }, (err) => {
 //     console.log('error was ', err);
 // });
-data.read('test', 'newFile', (err, result) => {
-    console.log(err, result);
+// data.read('test', 'newFile', (err, result) => {
+//     console.log(err, result);
+// });
+// data.update('test', 'newFile', { name: 'England', language: 'English' }, (err) => {
+//     console.log(err);
+// });
+data.delete('test', 'newFile', (err) => {
+    console.log(err);
 });
 
 // configuration
