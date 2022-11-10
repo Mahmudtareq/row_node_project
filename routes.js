@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /*
  * Title: Routes
  * Description: Application Routes

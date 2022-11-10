@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /*
  * Title: User Handler
  * Description: Handler to handle user related routes
